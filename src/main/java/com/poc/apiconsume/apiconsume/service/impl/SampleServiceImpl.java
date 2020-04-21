@@ -1,12 +1,9 @@
 package com.poc.apiconsume.apiconsume.service.impl;
 
 import java.net.URI;
-import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Service;
 
@@ -33,24 +30,6 @@ public class SampleServiceImpl implements SampleService {
 		 */
 		SampleResponseDTO serviceResponseBody = client.invokePOST(serviceUrl, entity, SampleResponseDTO.class);
 		return serviceResponseBody;
-	}
-
-	/**
-	 * For Authorization header, can be moved to Utility Class
-	 * 
-	 * @param user
-	 * @param password
-	 * @return
-	 */
-	@SuppressWarnings("unused")
-	private HttpHeaders createHttpHeaders(String user, String password)
-	{
-	    String notEncoded = user + ":" + password;
-	    String encodedAuth = "Basic " + Base64.getEncoder().encodeToString(notEncoded.getBytes());
-	    HttpHeaders headers = new HttpHeaders();
-	    headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("Authorization", encodedAuth);
-	    return headers;
 	}
 
 }

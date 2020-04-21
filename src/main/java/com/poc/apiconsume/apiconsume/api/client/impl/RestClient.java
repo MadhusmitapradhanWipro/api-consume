@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -29,23 +28,18 @@ public class RestClient implements IRestClient {
 
 			final ResponseEntity<T> exchange = template.exchange(finalURL, HttpMethod.GET, requestEntity, responseType);
 
-			if (exchange.getStatusCode() == HttpStatus.OK) {
-				return exchange.getBody();
-			}
+			return exchange.getBody();
+
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
-		return null;
 	}
 
 	public <T extends AbstractBaseDTO> T invokePOST(String url, RequestEntity<?> requestEntity, Class<T> responseType)
 			throws Exception {
 		try {
 			final ResponseEntity<T> exchange = template.exchange(requestEntity, responseType);
-			/*
-			 * if (exchange.getStatusCode() == HttpStatus.OK) {
-			 * System.out.println(exchange.getBody()); return exchange.getBody(); }
-			 */
+
 			return exchange.getBody();
 		} catch (Exception e) {
 			throw new Exception(e);
@@ -57,14 +51,12 @@ public class RestClient implements IRestClient {
 		try {
 			final ResponseEntity<T> exchange = template.exchange(new URI(url), HttpMethod.PUT, requestEntity,
 					responseType);
-			if (exchange.getStatusCode() == HttpStatus.OK) {
-				return exchange.getBody();
-			}
+
+			return exchange.getBody();
 
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
-		return null;
 	}
 
 	/**
@@ -81,6 +73,5 @@ public class RestClient implements IRestClient {
 		}
 		return builder.build().encode().toUri().toString();
 	}
-	
 
 }
