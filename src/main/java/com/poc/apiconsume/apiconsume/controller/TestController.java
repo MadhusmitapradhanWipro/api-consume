@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.poc.apiconsume.apiconsume.dto.request.SampleRequestDTO;
 import com.poc.apiconsume.apiconsume.dto.response.SampleResponseDTO;
-import com.poc.apiconsume.apiconsume.service.SampleServiceImpl;
+import com.poc.apiconsume.apiconsume.service.SampleService;
 
 @RestController
 public class TestController {
 	@Autowired
-	SampleServiceImpl service;
+	SampleService service;
 	
 	@PostMapping("/test")
 	public SampleResponseDTO test(@RequestBody SampleRequestDTO request) throws Exception {

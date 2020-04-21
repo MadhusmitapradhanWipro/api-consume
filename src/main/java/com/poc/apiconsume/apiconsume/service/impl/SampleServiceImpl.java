@@ -1,4 +1,4 @@
-package com.poc.apiconsume.apiconsume.service;
+package com.poc.apiconsume.apiconsume.service.impl;
 
 import java.net.URI;
 import java.util.Base64;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.poc.apiconsume.apiconsume.api.client.IRestClient;
 import com.poc.apiconsume.apiconsume.dto.request.SampleRequestDTO;
 import com.poc.apiconsume.apiconsume.dto.response.SampleResponseDTO;
+import com.poc.apiconsume.apiconsume.service.SampleService;
 
 @Service
 public class SampleServiceImpl implements SampleService {
