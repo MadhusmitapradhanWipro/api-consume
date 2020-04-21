@@ -15,7 +15,7 @@ import com.poc.apiconsume.apiconsume.dto.request.SampleRequestDTO;
 import com.poc.apiconsume.apiconsume.dto.response.SampleResponseDTO;
 
 @Service
-public class SampleServiceImpl {
+public class SampleServiceImpl implements SampleService {
 
 	@Autowired
 	private IRestClient client;
